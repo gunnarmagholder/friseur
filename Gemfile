@@ -11,7 +11,15 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rails'
   gem 'guard-test'
+  gem 'growl'
+  gem 'factory_girl_rails'
 end
+
+group :test do
+  gem 'shoulda'
+end
+
+gem 'ruby-prof'
 
 gem 'devise'
 
