@@ -1,18 +1,11 @@
-class DeviseCreateCustomers < ActiveRecord::Migration
+class DeviseCreateEmployees < ActiveRecord::Migration
   def change
-    create_table(:customers) do |t|
+    create_table(:employees) do |t|
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
-      t.string :name,               :null => false, :default => "" 
       t.string :encrypted_password, :null => false, :default => ""
+      t.string :name
       t.string :telephone
-      t.string :street
-      t.string :zipcode
-      t.string :city
-      t.boolean :sex
-      t.date   :dob 
-      t.integer :employee_id, :default => nil
-            
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
@@ -48,10 +41,10 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :customers, :email,                :unique => true
-    add_index :customers, :reset_password_token, :unique => true
-    # add_index :customers, :confirmation_token,   :unique => true
-    # add_index :customers, :unlock_token,         :unique => true
-    # add_index :customers, :authentication_token, :unique => true
+    add_index :employees, :email,                :unique => true
+    add_index :employees, :reset_password_token, :unique => true
+    # add_index :employees, :confirmation_token,   :unique => true
+    # add_index :employees, :unlock_token,         :unique => true
+    # add_index :employees, :authentication_token, :unique => true
   end
 end

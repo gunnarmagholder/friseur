@@ -18,4 +18,23 @@ class CustomerTest < ActiveRecord::TestCase
     assert !@user.valid?
   end
 
+  test "it must respond to main_employee" do  
+    @user = FactoryGirl.create(:customer)
+    assert_respond_to @user, :myEmployee
+  end
+  test "default customer has no main_employee " do  
+    @user = FactoryGirl.create(:customer)
+    assert_equal nil, @user.myEmployee 
+  end
+
+  test "the responding to main_employee can be a setter" do
+    @user = FactoryGirl.create(:customer)
+    assert_nothing_raised { @user.myEmployee = 1 }
+    @user.myEmployee = 1
+    @user.save! 
+    assert_equal 1, @user.myEmployee
+  end
+
+  
+
 end

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>App date:</b>
+  <%= @appointment.app_date %>
+</p>
+
+<p>
+  <b>App time:</b>
+  <%= @appointment.app_time %>
+</p>
+
+<p>
+  <b>Customer:</b>
+  <%= @appointment.customer_id %>
+</p>
+
+<p>
+  <b>Employee:</b>
+  <%= @appointment.employee %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @appointment.product_id %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @appointment.notes %>
+</p>
+
+<p>
+  <b>Confirmed:</b>
+  <%= @appointment.confirmed %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%= @appointment.telephone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @appointment.email %>
+</p>
+
+<p>
+  <b>Custname:</b>
+  <%= @appointment.custname %>
+</p>
+
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

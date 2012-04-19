@@ -17,6 +17,7 @@ end
 
 group :test do
   gem 'shoulda'
+  gem 'mocha'
 end
 
 gem 'ruby-prof'

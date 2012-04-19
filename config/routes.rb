@@ -1,5 +1,9 @@
 Friseur::Application.routes.draw do
 
+  resources :appointments
+
+  devise_for :employees
+
   devise_for :customers
 
   root :to => "home#index"
