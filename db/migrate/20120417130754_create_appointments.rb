@@ -15,5 +15,6 @@ class CreateAppointments < ActiveRecord::Migration
       t.timestamps
     end
     add_index :appointments, :employee_id
+    add_index :appointments, :app_date
   end
 end

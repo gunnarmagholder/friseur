@@ -37,4 +37,14 @@ class AppointmentTest < ActiveSupport::TestCase
     @app1 = FactoryGirl.create(:appointment)
     assert_respond_to @app1, :to_block
   end
+    test "should respond to day_matrix" do
+    @app1 = FactoryGirl.create(:appointment)
+    assert_respond_to @app1, :day_matrix
+  end
+  test "should respond with a block matrix for the given product" do
+    @prod = FactoryGirl.create(:product)
+    @app1 = FactoryGirl.create(:appointment, product_id: @prod.id)
+    assert @app1.valid?
+    assert @prod.valid?
+  end
 end

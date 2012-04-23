@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417130754) do
+ActiveRecord::Schema.define(:version => 20120419194642) do
 
   create_table "appointments", :force => true do |t|
     t.date     "app_date"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20120417130754) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "appointments", ["app_date"], :name => "index_appointments_on_app_date"
   add_index "appointments", ["employee_id"], :name => "index_appointments_on_employee_id"
 
   create_table "customers", :force => true do |t|
@@ -75,5 +76,13 @@ ActiveRecord::Schema.define(:version => 20120417130754) do
 
   add_index "employees", ["email"], :name => "index_employees_on_email", :unique => true
   add_index "employees", ["reset_password_token"], :name => "index_employees_on_reset_password_token", :unique => true
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.integer  "block_matrix", :limit => 8
+    t.decimal  "price"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
 end

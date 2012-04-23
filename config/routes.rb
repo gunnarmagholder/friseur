@@ -1,5 +1,7 @@
 Friseur::Application.routes.draw do
 
+  resources :products
+
   resources :appointments
 
   devise_for :employees

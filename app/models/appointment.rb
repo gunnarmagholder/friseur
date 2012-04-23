@@ -17,7 +17,11 @@ class Appointment < ActiveRecord::Base
 
   def to_block
    convert_time_to_block(self.app_time)
- end
+  end
+  
+  def day_matrix
+    
+  end
 
   def check_schedule
     true
