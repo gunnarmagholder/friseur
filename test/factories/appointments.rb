@@ -12,5 +12,6 @@ FactoryGirl.define do
     telephone "04040194676"
     email nil
     custname "Hr. Muster"
+    calendar
   end
 end

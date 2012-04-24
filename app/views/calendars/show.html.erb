@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Employee:</b>
+  <%= @calendar.employee %>
+</p>
+
+<p>
+  <b>Day:</b>
+  <%= @calendar.day %>
+</p>
+
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>

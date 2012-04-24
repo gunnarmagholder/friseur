@@ -16,16 +16,18 @@ class AppointmentTest < ActiveSupport::TestCase
   test "if there is a customer_id, then take the name from the customer model" do
     @app = FactoryGirl.create(:appointment)
     @emp = FactoryGirl.create(:employee)
+    @cust = FactoryGirl.create(:customer)
     assert @app.valid?
     assert @emp.valid?
-    @app.employee = Employee.find(@emp.id) 
+    @app.employee = Employee.find(@emp.id)
+    @app.customer_id = @cust.id 
     @app.save!
     assert @app.valid? 
-    assert_equal @emp.name, @app.custname
+    assert_equal @cust.name, @app.custname
   end  
   test "throw an error if appointsment overlap in time and employee" do
     @app1 = FactoryGirl.create(:appointment)
-    @emp = FactoryGirl.create(:employee)
+    @emp  = FactoryGirl.create(:employee)
     assert @app1.valid?
     assert @emp.valid?
     @app1.employee = Employee.find(@emp.id) 

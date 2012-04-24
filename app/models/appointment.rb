@@ -8,8 +8,10 @@ end
 
 class Appointment < ActiveRecord::Base
   belongs_to :employee
+  belongs_to :calendar
   before_save :copy_employee_name 
   before_save :check_schedule
+  
 
   attr_accessible :app_date, :app_time, :confirmed, :custname, :customer_id, :email, :notes, :product_id, :telephone
 
@@ -28,8 +30,8 @@ class Appointment < ActiveRecord::Base
   end
 
   def copy_employee_name
-    if self.employee
-      self.custname = self.employee.name
+    if self.customer_id > 0
+      self.custname = Customer.find(self.customer_id).name
     end
   end
 end

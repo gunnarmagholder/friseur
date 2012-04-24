@@ -1,5 +1,7 @@
 Friseur::Application.routes.draw do
 
+  resources :calendars
+
   resources :products
 
   resources :appointments
