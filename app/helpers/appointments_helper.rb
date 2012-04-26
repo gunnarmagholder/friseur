@@ -1,13 +1,6 @@
 module AppointmentsHelper
-  def convert_time_to_block(time_string)
-    @t = Time.parse(time_string)
-    @blocks = (@t.hour - 8) * 4 + (@t.min / 15 )
-  end
-  def convert_block_to_time(block)
-    @hrs = (block / 4) + 8
-    @mns = (block % 4) * 15
-    return ("%02d" % @hrs.to_s) + ":" + ("%02d" % @mns.to_s)
-  end
+  include ApplicationHelper
+
   def checkschedule(matrix, search_matrix)
     return_arr = []
     matrix_length = binary_length(matrix)
@@ -25,8 +18,5 @@ module AppointmentsHelper
     return_arr 
   end  
   
-  def binary_length(matrix)
-    return matrix.to_s(2).length
-  end
-  
+
 end

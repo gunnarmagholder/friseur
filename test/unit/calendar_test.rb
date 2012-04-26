@@ -18,4 +18,13 @@ class CalendarTest < ActiveSupport::TestCase
     @cal.expects(:appointments)
     assert_kind_of Fixnum, @cal.daymatrix()
   end
+  test "should respond to collide method" do
+    @cal = FactoryGirl.create(:calendar)
+    assert_respond_to @cal, :collide
+  end
+  
+  test "collide results in true or false" do
+    
+  end
+  
 end

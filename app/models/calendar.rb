@@ -7,6 +7,7 @@ class Calendar < ActiveRecord::Base
     self.appointments
     1
   end
-  
-  
+  def collide(starttime, matrix)
+    
+  end
 end
