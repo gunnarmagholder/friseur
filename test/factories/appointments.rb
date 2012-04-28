@@ -5,7 +5,6 @@ FactoryGirl.define do
     app_date "2012-04-17"
     app_time "15:00"
     customer_id 0
-    employee
     product_id 1
     notes "MyText"
     confirmed false

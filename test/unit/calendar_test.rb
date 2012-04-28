@@ -23,8 +23,4 @@ class CalendarTest < ActiveSupport::TestCase
     assert_respond_to @cal, :collide
   end
   
-  test "collide results in true or false" do
-    
-  end
-  
 end

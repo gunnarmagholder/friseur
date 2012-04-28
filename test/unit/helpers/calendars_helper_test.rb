@@ -16,4 +16,9 @@ class CalendarsHelperTest < ActionView::TestCase
     searchMatrix = 0b110011
     assert_equal 0b11001100, build_comparison_matrix(starttime, searchMatrix)
   end
+  test "comparison matrix for 12:00 is searchMatrix leftshifted 16 times" do
+    starttime = "12:00"
+    searchMatrix = 0b110011
+    assert_equal 0b1100110000000000000000, build_comparison_matrix(starttime, searchMatrix)    
+  end
 end
