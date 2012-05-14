@@ -7,11 +7,9 @@ class CustomerValidator < ActiveModel::Validator
 end
 
 class Appointment < ActiveRecord::Base
-  belongs_to :employee
   belongs_to :calendar
-  before_save :copy_employee_name 
-  before_save :check_schedule
-  
+  before_save :copy_customer_name 
+  before_save :check_schedule  
 
   attr_accessible :app_date, :app_time, :confirmed, :custname, :customer_id, :email, :notes, :product_id, :telephone
 
@@ -21,15 +19,11 @@ class Appointment < ActiveRecord::Base
    convert_time_to_block(self.app_time)
   end
   
-  def day_matrix
-    
-  end
-
   def check_schedule
     true
   end
 
-  def copy_employee_name
+  def copy_customer_name
     if self.customer_id > 0
       self.custname = Customer.find(self.customer_id).name
     end

@@ -5,10 +5,7 @@ module AppointmentsHelper
     return_arr = []
     matrix_length = binary_length(matrix)
     search_length = binary_length(search_matrix)
-    prefix = 2**(matrix_length+2)
-    matrix_mask = (2**(matrix_length+3))-1
-    matrix += prefix
-    matrix = matrix^matrix_mask
+    matrix = invert_matrix(matrix)
     for i in 0..matrix_length do 
       if ((matrix & search_matrix) == search_matrix)
         return_arr << i
