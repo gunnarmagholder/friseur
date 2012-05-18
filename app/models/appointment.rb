@@ -11,10 +11,15 @@ class Appointment < ActiveRecord::Base
   before_save :copy_customer_name 
   before_save :check_schedule  
 
-  attr_accessible :app_date, :app_time, :confirmed, :custname, :customer_id, :email, :notes, :product_id, :telephone
+  attr_accessible :app_date, :app_time, :confirmed, :custname, 
+                  :customer_id, :email, :notes, :product_id, 
+                  :telephone, :calendar_id
 
   validates_with CustomerValidator
-
+  validates_presence_of :app_date
+  validates_presence_of :app_time
+  validates_presence_of :employee_id
+  
   def to_block
    convert_time_to_block(self.app_time)
   end

@@ -12,5 +12,6 @@ FactoryGirl.define do
     email nil
     custname "Hr. Muster"
     calendar
+    employee_id 1
   end
 end
