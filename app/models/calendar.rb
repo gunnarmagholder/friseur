@@ -5,6 +5,15 @@ class Calendar < ActiveRecord::Base
   has_many :appointments
   attr_accessible :day
   
+  def self.get_appointments(day)
+    return_value = 0
+    @cals_per_day = self.where(:day => day)
+    @cals_per_day.each do |cal|
+      return_value += cal.appointments.count
+    end
+    return_value
+  end
+
   def daymatrix
     return_matrix = 0
       if self.appointments

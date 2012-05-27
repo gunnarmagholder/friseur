@@ -35,8 +35,6 @@ class AppointmentTest < ActiveSupport::TestCase
     assert_respond_to @app1, :to_block
   end
   
-
-  
   test "after attaching the appointment to a calendar, the calendar must be valid" do
     @cal = FactoryGirl.create(:calendar)
     @app = FactoryGirl.create(:appointment)

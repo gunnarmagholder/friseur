@@ -82,4 +82,52 @@ class CalendarTest < ActiveSupport::TestCase
   end
   
 
+
+  test "it should respond to the class method get_appointments" do  
+    assert Calendar.get_appointments(Time.now)
+  end
+
+  test "it shoud respond with the number of appointments for a given day" do
+    @cal = FactoryGirl.create(:calendar)
+    @product = FactoryGirl.create(:product)
+    @product.stubs(:block_matrix).returns(0x10011)
+    @app = FactoryGirl.create(:appointment)
+    @app.app_time = "08:00"
+    @app.product_id = @product.id
+    @app.save!  
+    @cal.appointments<<@app
+    @app = FactoryGirl.create(:appointment)
+    @app.app_time = "15:00"
+    @app.product_id = @product.id
+    @app.save!  
+    @cal.appointments<<@app
+
+    assert_equal 2, Calendar.get_appointments(Date.parse("23.04.2012"))
+  end
+
+  test "it shoud respond with the number of appointments for a given day for multiple calendars" do
+    @cal = FactoryGirl.create(:calendar)
+    @product = FactoryGirl.create(:product)
+    @product.stubs(:block_matrix).returns(0x10011)
+    @app = FactoryGirl.create(:appointment)
+    @app.app_time = "08:00"
+    @app.product_id = @product.id
+    @app.save!  
+    @cal.appointments<<@app
+    @app = FactoryGirl.create(:appointment)
+    @app.app_time = "15:00"
+    @app.product_id = @product.id
+    @app.save!  
+    @cal.appointments<<@app
+    @cal2 = FactoryGirl.create(:calendar)
+    @product = FactoryGirl.create(:product)
+    @product.stubs(:block_matrix).returns(0x10011)
+    @app = FactoryGirl.create(:appointment)
+    @app.app_time = "08:00"
+    @app.product_id = @product.id
+    @app.save!  
+    @cal2.appointments<<@app
+    assert_equal 3, Calendar.get_appointments(Date.parse("23.04.2012"))
+  end
+
 end
