@@ -1,6 +1,9 @@
 module ApplicationHelper
   def convert_time_to_block(time_string)
-    @t = Time.parse(time_string)
+    @t = time_string
+    if time_string.class == String
+      @t = Time.parse(time_string)
+    end
     @blocks = (@t.hour - 8) * 4 + (@t.min / 15 )
   end
   def convert_block_to_time(block)
@@ -11,8 +14,8 @@ module ApplicationHelper
   def binary_length(matrix)
     return matrix.to_s(2).length
   end
-  def invert_matrix(matrix) 
-    matrix_length = binary_length(matrix)
+  def invert_matrix(matrix, matrix_length) 
+    # matrix_length = binary_length(matrix)
     prefix = 2**(matrix_length+2)
     matrix_mask = (2**(matrix_length+3))-1
     matrix += prefix

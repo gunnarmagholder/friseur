@@ -5,13 +5,11 @@ FactoryGirl.define do
     app_date "2012-04-17"
     app_time "15:00"
     customer_id 0
-    product_id 1
+    product
     notes "MyText"
     confirmed false
     telephone "04040194676"
     email nil
     custname "Hr. Muster"
-    calendar
-    employee_id 1
   end
 end

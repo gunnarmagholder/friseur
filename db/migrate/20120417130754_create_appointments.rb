@@ -5,7 +5,7 @@ class CreateAppointments < ActiveRecord::Migration
       t.time :app_time
       t.integer :customer_id
       t.references :employee
-      t.integer :product_id
+      t.references :product
       t.text :notes
       t.boolean :confirmed
       t.string :telephone

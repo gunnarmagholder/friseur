@@ -13,6 +13,42 @@ class CalendarTest < ActiveSupport::TestCase
     @cal = FactoryGirl.create(:calendar)
     assert_kind_of Fixnum, @cal.daymatrix()
   end
+
+  test "on an empty calendar, the daymatrix is 0" do
+    @cal = FactoryGirl.create(:calendar)
+    assert_equal 0, @cal.daymatrix()
+  end
+
+  test "when attaching the appointment to a calendar, the field calendar_id should hold the calendar id" do
+    @cal = FactoryGirl.create(:calendar)
+    @product = FactoryGirl.create(:product)
+    @app = FactoryGirl.create(:appointment)
+    @product.stubs(:block_matrix).returns(0x10011)
+    @app.product_id = @product.id
+    @cal.appointments<<@app
+    assert_equal @app.calendar, @cal
+  end
+  
+  test "when attaching an appointment to an empty calendar, than the result is the appointments product_id matrix" do
+    @cal = FactoryGirl.create(:calendar)
+    @product = FactoryGirl.create(:product)
+    @product.stubs(:block_matrix).returns(0x10011)
+    @app = FactoryGirl.create(:appointment)
+    @app.app_time = "08:00"
+    @app.product_id = @product.id
+    @app.save!  
+    @cal.appointments<<@app
+    assert @app.valid?
+    assert @product.valid?
+    assert @cal.valid?
+    assert_equal 25, @cal.daymatrix
+  end
+  
+  test "calender must belong to an employee" do
+    @cal = FactoryGirl.create(:calendar)
+    assert @cal.employee.valid?
+  end
+
   test "daymatrix calls appointments" do
     @cal = FactoryGirl.create(:calendar)
     @cal.expects(:appointments)

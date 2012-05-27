@@ -23,12 +23,12 @@ class AppointmentsHelperTest < ActionView::TestCase
     assert_kind_of Array, checkschedule(1,2)
   end
   test "search for a free appoint inside a normal day" do
-    matrix = 0b10110011101110001101101
+    matrix = 0b111111111111111111111111110110011101110001101101
     searchMatrix = 0b111001
     assert_equal [4], checkschedule(matrix,searchMatrix)
   end
   test "no free time in a busy day" do
-    matrix = 0b11111111111111111111111
+    matrix = 0b111111111111111111111111111111111111111111111111
     searchMatrix = 0b111001
     assert_equal [], checkschedule(matrix, searchMatrix)
   end
